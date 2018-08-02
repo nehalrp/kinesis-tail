@@ -52,7 +52,9 @@ func main() {
 		fmt.Fprintf(os.Stderr, "cannot describe stream. please verify your stream is accessible.: %s", err)
 		os.Exit(1)
 	}
-	fmt.Printf("Your Stream information: %v\n", streams)
+	if ! *raw {
+		fmt.Printf("Your Stream information: %v\n", streams)
+	}
 
 	iteratorOutput, err := c.GetShardIterator(&kinesis.GetShardIteratorInput{
 		// take first shard.
@@ -65,7 +67,9 @@ func main() {
 		fmt.Fprintf(os.Stderr, "cannot get iterator: %s", err)
 		os.Exit(1)
 	}
-	fmt.Printf("%v\n", iteratorOutput)
+	if ! *raw {
+		fmt.Printf("%v\n", iteratorOutput)
+	}
 
 	iter := iteratorOutput.ShardIterator
 	for {
