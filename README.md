@@ -42,6 +42,7 @@ Continuously fetch records from Kinesis Stream and print it. Useful for debuggin
 
 ```
 Usage of kineis-tail:
+  -r    output just the data (delimited by newlines) without any metadata or processing
   -f    tailing kinesis stream forever or not (like: tail -f) (default true)
   -interval duration
         seconds for waiting next GetRecords request. (default 3s)
